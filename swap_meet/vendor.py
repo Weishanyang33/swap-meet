@@ -18,8 +18,6 @@ class Vendor:
     return list(filter(lambda item : item.category == category, self.inventory))
 
   def swap_items(self, other, my_item, their_item):
-    if len(self.inventory) < 1 or len(other.inventory) < 1:
-      return False
     try:
       self.inventory.remove(my_item)
       other.inventory.remove(their_item)
