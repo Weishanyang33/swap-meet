@@ -1,0 +1,2 @@
+class Decor:
+  pass
