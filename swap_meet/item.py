@@ -7,15 +7,13 @@ class Item:
         return "Hello World!"   
     
     def condition_description(self):
-        if self.condition == 0:
+        if self.condition < 1:
             return "Take it home for free!"
-        elif self.condition == 1:
+        elif self.condition < 2:
             return "Bearable"
-        elif self.condition == 2:
+        elif self.condition < 3:
             return "Usable"
-        elif self.condition == 3:
+        elif self.condition < 4:
             return "Normal wear"
-        elif self.condition == 4:
+        else:
             return "Like new"
-        elif self.condition == 5:
-            return "Brand-New"
