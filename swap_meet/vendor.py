@@ -29,23 +29,17 @@ class Vendor:
         if my_item not in self.inventory or their_item not in their_vendor.inventory:
             return False
         else:
-            self.inventory.remove(my_item)
-            self.inventory.append(their_item)
-            their_vendor.inventory.remove(their_item)
-            their_vendor.inventory.append(my_item)
+            self.remove(their_vendor.add(my_item))
+            their_vendor.remove(self.add(their_item))
             return True 
           
     def swap_first_item(self, their_vendor):
-        if len(self.inventory) == 0 or len(their_vendor.inventory) == 0:
+        if not self.inventory or not their_vendor.inventory:
             return False
         else:
             my_first_item = self.inventory[0]
             their_first_item = their_vendor.inventory[0]
-            self.inventory.append(their_first_item)
-            their_vendor.inventory.append(my_first_item)
-            self.inventory.remove(my_first_item)
-            their_vendor.inventory.remove(their_first_item)
-            return True
+            return self.swap_items(their_vendor, my_first_item, their_first_item)
           
     def get_best_by_category(self, category):
         category_wanted = self.get_by_category(category)
