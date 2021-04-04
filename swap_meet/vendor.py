@@ -15,8 +15,7 @@ class Vendor:
         if item in self.inventory:
             self.inventory.remove(item)
             return item
-        else:
-          return False
+        return False
         
     def get_by_category(self, category):
       category_wanted = []
@@ -56,4 +55,17 @@ class Vendor:
         their_best = other.get_best_by_category(my_priority)
         return self.swap_items(other, my_best, their_best)
         
-    
+    def swap_by_newest(self, other):
+        my_newest = self.get_newest_by_age()
+        their_newest = other.get_newest_by_age()
+        if not my_newest or not their_newest:
+            return False
+        return self.swap_items(other, my_newest, their_newest)
+
+    def get_newest_by_age(self):
+        if not self.inventory:
+            return False
+        min_age = min(item.age for item in self.inventory)
+        for item in self.inventory:
+            if item.age == min_age:
+                return item
