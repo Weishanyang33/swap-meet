@@ -5,3 +5,5 @@ class Clothing(Item):
         super().__init__(condition = condition, category = "Clothing", age = age)
     def __str__(self):
         return "The finest clothing you could wear."
+    
+# test1
